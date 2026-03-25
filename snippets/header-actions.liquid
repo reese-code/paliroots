@@ -260,20 +260,37 @@
 <header-actions
   {{- block.shopify_attributes -}}
 >
+  <div class="paliroots-header-actions">
+    {% if customer %}
+      <span class="paliroots-header-greeting">Hi {{ customer.first_name | default: customer.name }}</span>
+    {% else %}
+      <a href="{{ routes.account_login_url }}" class="paliroots-header-login">Login</a>
+    {% endif %}
+    
+    <a href="{{ routes.all_products_collection_url }}" class="paliroots-header-shop-btn">Shop</a>
+    
+    {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+      {% render 'cart-drawer' %}
+      <button
+        class="header-actions__action header-actions__cart-icon"
+        aria-label="{{ 'accessibility.cart' | t }}"
+        data-cart-drawer-toggle
+      >
+        {% render 'cart-icon-component' %}
+      </button>
+    {% else %}
+      <a
+        href="{{ routes.cart_url }}"
+        class="header-actions__action header-actions__cart-icon"
+        aria-label="{{ 'accessibility.cart' | t }}"
+      >
+        {% render 'cart-icon-component' %}
+      </a>
+    {% endif %}
+  </div>
+
   {% if shop.customer_accounts_enabled %}
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
-  {% endif %}
-
-  {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
-    {% render 'cart-drawer' %}
-  {% else %}
-    <a
-      href="{{ routes.cart_url }}"
-      class="header-actions__action action__cart"
-      aria-label="{{ 'accessibility.cart' | t }}"
-    >
-      {% render 'cart-icon-component' %}
-    </a>
   {% endif %}
 </header-actions>

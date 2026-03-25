@@ -1,0 +1,95 @@
+{% comment %}
+  PALIROOTS Custom Header Section
+  Custom navigation bar with centered logo and login functionality
+{% endcomment %}
+
+<div class="paliroots-nav{% if section.settings.transparent_header and template.name == 'index' %} paliroots-nav--transparent{% endif %}">
+  <!-- Left Navigation -->
+  <nav class="paliroots-nav__left">
+    <a href="/collections/all" class="paliroots-nav__link">Shop</a>
+    <a href="/pages/lookbook" class="paliroots-nav__link">Lookbook</a>
+    <a href="/pages/our-story" class="paliroots-nav__link">Our Story</a>
+    <a href="/pages/philanthropy" class="paliroots-nav__link">Philanthropy</a>
+  </nav>
+
+  <!-- Center Logo -->
+  <div class="paliroots-nav__center">
+    <a href="/" class="paliroots-nav__logo">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 150 | image_tag: class: 'paliroots-nav__logo-img', alt: shop.name }}
+      {% else %}
+        PALIROOTS
+      {% endif %}
+    </a>
+  </div>
+
+  <!-- Right Navigation -->
+  <div class="paliroots-nav__right">
+    {% if customer %}
+      <span class="paliroots-nav__user-greeting">Hi {{ customer.first_name | default: customer.name }}</span>
+      <a href="/collections/all" class="paliroots-nav__shop-btn">Shop</a>
+    {% else %}
+      <a href="/account/login" class="paliroots-nav__link">Login</a>
+      <a href="/collections/all" class="paliroots-nav__shop-btn">Shop</a>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .paliroots-nav__logo-img {
+    max-height: 40px;
+    width: auto;
+  }
+
+  /* Transparent header variant */
+  .paliroots-nav--transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: transparent;
+  }
+  
+  .paliroots-nav--transparent .paliroots-nav__link,
+  .paliroots-nav--transparent .paliroots-nav__logo,
+  .paliroots-nav--transparent .paliroots-nav__user-greeting {
+    color: white;
+  }
+  
+  .paliroots-nav--transparent .paliroots-nav__shop-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .paliroots-nav--transparent .paliroots-nav__shop-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PALIROOTS Header",
+  "tag": "header",
+  "class": "paliroots-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent Header on Homepage",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "PALIROOTS Header"
+    }
+  ]
+}
+{% endschema %}
