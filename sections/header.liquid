@@ -154,6 +154,30 @@
   if collapse_header_paddings_class
     assign class = class | append: ' ' | append: collapse_header_paddings_class
   endif
+
+  # Add header adaptability classes based on page type
+  assign enable_adaptability = false
+  assign adaptability_style = ''
+
+  if template.name == 'index' and section.settings.enable_header_adaptability_home
+    assign enable_adaptability = true
+    assign adaptability_style = section.settings.header_adaptability_style_home
+  elsif template.name == 'product' and section.settings.enable_header_adaptability_product
+    assign enable_adaptability = true
+    assign adaptability_style = section.settings.header_adaptability_style_product
+  elsif template.name == 'collection' and section.settings.enable_header_adaptability_collection
+    assign enable_adaptability = true
+    assign adaptability_style = section.settings.header_adaptability_style_collection
+  endif
+
+  if enable_adaptability
+    assign class = class | append: ' header--adaptive'
+    if adaptability_style == 'gradient'
+      assign class = class | append: ' header--gradient'
+    elsif adaptability_style == 'scroll-based'
+      assign class = class | append: ' header--scroll-adaptive'
+    endif
+  endif
 %}
 
 <script type="application/ld+json">
@@ -379,7 +403,83 @@
     position: relative;
     /* will default to bg from its color scheme unless --header-bg-color is transparent */
     background-color: var(--header-bg-color, var(--color-background));
-  /* UPDATE HERE CLINE */
+  }
+
+  /* Header Adaptability Styles */
+  .header--adaptive {
+    transition: all 0.3s ease;
+  }
+
+  /* Gradient background option */
+  .header--gradient .header__row {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Force dark/default colorings */
+    --color-foreground: #000000;
+    --color-foreground-heading: #000000;
+    color: #000000;
+  }
+
+  .header--gradient .header__row * {
+    color: #000000 !important;
+  }
+
+  .header--gradient svg {
+    fill: #000000 !important;
+    stroke: #000000 !important;
+  }
+
+  /* Scroll-based adaptive header */
+  .header--scroll-adaptive .header__row {
+    transition: all 0.3s ease;
+  }
+
+  /* Default state: light colors for hero overlay */
+  .header--scroll-adaptive .header__row {
+    --color-foreground: #ffffff;
+    --color-foreground-heading: #ffffff;
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  .header--scroll-adaptive .header__row * {
+    color: #ffffff !important;
+  }
+
+  .header--scroll-adaptive svg {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Scrolled state: dark colors with gradient background */
+  .header--scroll-adaptive.header--scrolled .header__row {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    --color-foreground: #000000;
+    --color-foreground-heading: #000000;
+    color: #000000;
+  }
+
+  .header--scroll-adaptive.header--scrolled .header__row * {
+    color: #000000 !important;
+  }
+
+  .header--scroll-adaptive.header--scrolled svg {
+    fill: #000000 !important;
+    stroke: #000000 !important;
+  }
+
+  /* Remove all hover effects for adaptive headers */
+  .header--adaptive .header__row:hover,
+  .header--adaptive .header__row:has(.header-menu[aria-expanded='true']),
+  .header--adaptive .header__row:has(.menu-list__link[data-animating]),
+  .header--adaptive .header__row:has(.account-popover[open]),
+  .header--adaptive .header__row:has(.localization-wrapper:not([hidden])) {
+    /* Disable hover color changes */
   }
 
   .header__row--top:not(.divider--page-width),
@@ -899,6 +999,34 @@
     },
     {
       "type": "header",
+      "content": "Header Adaptability"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_header_adaptability_home",
+      "label": "Enable adaptive header on home page",
+      "default": false,
+      "info": "Choose between gradient background or scroll-based color changes"
+    },
+    {
+      "type": "select",
+      "id": "header_adaptability_style_home",
+      "label": "Home page adaptability style",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient background with dark text"
+        },
+        {
+          "value": "scroll-based",
+          "label": "Light colors over hero, dark after scrolling"
+        }
+      ],
+      "default": "gradient",
+      "visible_if": "{{ section.settings.enable_header_adaptability_home }}"
+    },
+    {
+      "type": "header",
       "content": "t:content.product_page"
     },
     {
@@ -926,6 +1054,34 @@
     },
     {
       "type": "header",
+      "content": "Header Adaptability"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_header_adaptability_product",
+      "label": "Enable adaptive header on product pages",
+      "default": false,
+      "info": "Choose between gradient background or scroll-based color changes"
+    },
+    {
+      "type": "select",
+      "id": "header_adaptability_style_product",
+      "label": "Product page adaptability style",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient background with dark text"
+        },
+        {
+          "value": "scroll-based",
+          "label": "Light colors over hero, dark after scrolling"
+        }
+      ],
+      "default": "gradient",
+      "visible_if": "{{ section.settings.enable_header_adaptability_product }}"
+    },
+    {
+      "type": "header",
       "content": "t:content.collection_page"
     },
     {
@@ -950,6 +1106,34 @@
       ],
       "default": "default",
       "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
+    },
+    {
+      "type": "header",
+      "content": "Header Adaptability"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_header_adaptability_collection",
+      "label": "Enable adaptive header on collection pages",
+      "default": false,
+      "info": "Choose between gradient background or scroll-based color changes"
+    },
+    {
+      "type": "select",
+      "id": "header_adaptability_style_collection",
+      "label": "Collection page adaptability style",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient background with dark text"
+        },
+        {
+          "value": "scroll-based",
+          "label": "Light colors over hero, dark after scrolling"
+        }
+      ],
+      "default": "gradient",
+      "visible_if": "{{ section.settings.enable_header_adaptability_collection }}"
     }
   ],
   "presets": []
