@@ -68,10 +68,12 @@
 
 <style>
   .header-logo__image {
-    --header-logo-image-height: {{ block.settings.custom_height_mobile }}px;
+    --header-logo-image-height: auto;
+    --header-logo-max-width-mobile: {{ block.settings.max_width_mobile | default: 150 }}px;
 
     @media screen and (width >= 750px) {
-      --header-logo-image-height: {{ block.settings.custom_height }}px;
+      --header-logo-image-height: auto;
+      --header-logo-max-width: {{ block.settings.max_width | default: 200 }}px;
     }
   }
 </style>
@@ -119,9 +121,14 @@
 
   .header-logo__image {
     height: var(--header-logo-image-height);
+    max-width: var(--header-logo-max-width-mobile);
     object-fit: contain;
     /* For Safari with SVG logos */
     width: auto;
+
+    @media screen and (width >= 750px) {
+      max-width: var(--header-logo-max-width);
+    }
   }
 
   .header-logo:has(.header-logo__inverse) .header-logo__original {
@@ -154,29 +161,29 @@
     },
     {
       "type": "header",
-      "content": "t:content.size",
+      "content": "Logo Size (Height: Auto)",
       "visible_if": "{{ settings.logo != blank }}"
     },
     {
       "type": "range",
-      "id": "custom_height",
-      "label": "t:settings.desktop_height",
-      "min": 12,
-      "max": 100,
-      "step": 1,
+      "id": "max_width",
+      "label": "Desktop Max Width",
+      "min": 50,
+      "max": 400,
+      "step": 10,
       "unit": "px",
-      "default": 20,
+      "default": 200,
       "visible_if": "{{ settings.logo != blank }}"
     },
     {
       "type": "range",
-      "id": "custom_height_mobile",
-      "label": "t:settings.mobile_height",
-      "min": 12,
-      "max": 100,
-      "step": 1,
+      "id": "max_width_mobile",
+      "label": "Mobile Max Width", 
+      "min": 50,
+      "max": 300,
+      "step": 10,
       "unit": "px",
-      "default": 20,
+      "default": 150,
       "visible_if": "{{ settings.logo != blank }}"
     },
     {

@@ -1,0 +1,42 @@
+<!-- PALIROOTS Custom Navigation -->
+<nav class="tw-flex tw-items-center">
+  <div class="tw-flex tw-gap-8 tw-items-center">
+    {% if linklists['main-menu'].links[0] %}
+      <a href="{{ linklists['main-menu'].links[0].url }}" class="paliroots-nav-link tw-font-neue-montreal tw-font-normal tw-text-base tw-text-black tw-no-underline tw-transition-opacity tw-duration-200 hover:tw-opacity-70">
+        {{ settings.nav_shop_text | default: 'Shop' }}
+      </a>
+    {% endif %}
+    
+    {% if linklists['main-menu'].links[1] %}
+      <a href="{{ linklists['main-menu'].links[1].url }}" class="paliroots-nav-link tw-font-neue-montreal tw-font-normal tw-text-base tw-text-black tw-no-underline tw-transition-opacity tw-duration-200 hover:tw-opacity-70 tw-uppercase">
+        {{ settings.nav_lookbook_text | default: 'LOOKBOOK' }}
+      </a>
+    {% endif %}
+    
+    {% if linklists['main-menu'].links[2] %}
+      <a href="{{ linklists['main-menu'].links[2].url }}" class="paliroots-nav-link tw-font-neue-montreal tw-font-normal tw-text-base tw-text-black tw-no-underline tw-transition-opacity tw-duration-200 hover:tw-opacity-70">
+        {{ settings.nav_story_text | default: 'Our Story' }}
+      </a>
+    {% endif %}
+    
+    {% if linklists['main-menu'].links[3] %}
+      <a href="{{ linklists['main-menu'].links[3].url }}" class="paliroots-nav-link tw-font-neue-montreal tw-font-normal tw-text-base tw-text-black tw-no-underline tw-transition-opacity tw-duration-200 hover:tw-opacity-70 tw-uppercase">
+        {{ settings.nav_philanthropy_text | default: 'PHILANTHROPY' }}
+      </a>
+    {% endif %}
+  </div>
+</nav>
+
+{% stylesheet %}
+/* Transparent header overrides */
+.template-index .header[transparent] .paliroots-nav-link {
+  color: white !important;
+}
+
+/* Mobile navigation */
+@media screen and (max-width: 749px) {
+  nav.tw-flex {
+    display: none;
+  }
+}
+{% endstylesheet %}
