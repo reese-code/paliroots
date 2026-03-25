@@ -262,12 +262,10 @@
 >
   <div class="paliroots-header-actions">
     {% if customer %}
-      <span class="paliroots-header-greeting">Hi {{ customer.first_name | default: customer.name }}</span>
+      <span class="paliroots-header-greeting">Hi {{ customer.first_name | default: customer.name }}!</span>
     {% else %}
       <a href="{{ routes.account_login_url }}" class="paliroots-header-login">Login</a>
     {% endif %}
-    
-    <a href="{{ routes.all_products_collection_url }}" class="paliroots-header-shop-btn">Shop</a>
     
     {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
       {% render 'cart-drawer' %}

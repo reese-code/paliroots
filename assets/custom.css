@@ -705,16 +705,40 @@ select::after:active {
    15. PALIROOTS HEADER OVERRIDES
    ============================================ */
 
-/* Hide search on homepage, add custom right actions */
-.template-index .header__column--right .search-action {
+/* Hide search on all pages for PALIROOTS design */
+.header__column--right .search-action {
   display: none !important;
+}
+
+/* Custom navigation styling to match mockup */
+.header__column--left .overflow-menu .menu-list__link {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  font-size: 16px;
+  color: var(--color-contrast-higher);
+  text-decoration: none;
+  text-transform: none;
+  transition: opacity 0.2s ease;
+}
+
+.header__column--left .overflow-menu .menu-list__link:hover {
+  opacity: 0.7;
+}
+
+/* Style specific navigation items to match mockup */
+.header__column--left .overflow-menu .menu-list__link[href*="lookbook"] {
+  text-transform: uppercase;
+}
+
+.header__column--left .overflow-menu .menu-list__link[href*="philanthropy"] {
+  text-transform: uppercase;
 }
 
 /* Custom header actions for PALIROOTS */
 .paliroots-header-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .paliroots-header-login {
@@ -733,46 +757,60 @@ select::after:active {
 .paliroots-header-greeting {
   font-size: 16px;
   color: var(--color-contrast-higher);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.paliroots-header-shop-btn {
-  background-color: var(--color-contrast-higher);
-  color: var(--color-bg);
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  font-size: 16px;
-  transition: background-color 0.2s ease;
-  border: none;
-  cursor: pointer;
+/* Green online indicator dot */
+.paliroots-header-greeting::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #00ff00;
+  border-radius: 50%;
   display: inline-block;
 }
 
-.paliroots-header-shop-btn:hover {
-  background-color: var(--color-contrast-high);
+/* Cart icon adjustments to match mockup */
+.header-actions__cart-icon {
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
+  margin: 0 !important;
 }
 
-/* Transparent header overrides for homepage */
-.template-index .header[transparent] .paliroots-header-login,
-.template-index .header[transparent] .paliroots-header-greeting {
-  color: white;
-}
-
-.template-index .header[transparent] .paliroots-header-shop-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.template-index .header[transparent] .paliroots-header-shop-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Cart icon adjustments */
 .header-actions__cart-icon svg {
   width: 24px !important;
   height: 24px !important;
+  color: var(--color-contrast-higher) !important;
+}
+
+/* Transparent header overrides for homepage */
+.template-index .header[transparent] .overflow-menu .menu-list__link {
+  color: white !important;
+}
+
+.template-index .header[transparent] .paliroots-header-login,
+.template-index .header[transparent] .paliroots-header-greeting {
+  color: white !important;
+}
+
+.template-index .header[transparent] .header-actions__cart-icon svg {
+  color: white !important;
+}
+
+/* Logo styling to match mockup */
+.header-logo .h2 {
+  font-family: var(--font-header) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: 24px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--color-contrast-higher) !important;
+}
+
+.template-index .header[transparent] .header-logo .h2 {
+  color: white !important;
 }
 
 /* Mobile header adjustments */
@@ -781,8 +819,7 @@ select::after:active {
     gap: 12px;
   }
   
-  .paliroots-header-shop-btn {
-    padding: 10px 20px;
-    font-size: 14px;
+  .header__column--left {
+    display: none;
   }
 }
