@@ -412,7 +412,7 @@
 
   /* Gradient background option */
   .header--gradient .header__row {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
@@ -422,11 +422,13 @@
     color: #000000;
   }
 
-  .header--gradient .header__row * {
+  .header--gradient .header__row *,
+  .header--gradient .header-logo * {
     color: #000000 !important;
   }
 
-  .header--gradient svg {
+  .header--gradient svg,
+  .header--gradient .header-logo svg {
     fill: #000000 !important;
     stroke: #000000 !important;
   }
@@ -444,11 +446,13 @@
     background-color: transparent;
   }
 
-  .header--scroll-adaptive .header__row * {
+  .header--scroll-adaptive .header__row *,
+  .header--scroll-adaptive .header-logo * {
     color: #ffffff !important;
   }
 
-  .header--scroll-adaptive svg {
+  .header--scroll-adaptive svg,
+  .header--scroll-adaptive .header-logo svg {
     fill: #ffffff !important;
     stroke: #ffffff !important;
   }
@@ -464,11 +468,13 @@
     color: #000000;
   }
 
-  .header--scroll-adaptive.header--scrolled .header__row * {
+  .header--scroll-adaptive.header--scrolled .header__row *,
+  .header--scroll-adaptive.header--scrolled .header-logo * {
     color: #000000 !important;
   }
 
-  .header--scroll-adaptive.header--scrolled svg {
+  .header--scroll-adaptive.header--scrolled svg,
+  .header--scroll-adaptive.header--scrolled .header-logo svg {
     fill: #000000 !important;
     stroke: #000000 !important;
   }
