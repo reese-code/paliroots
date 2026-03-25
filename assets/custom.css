@@ -813,6 +813,74 @@ select::after:active {
   color: white !important;
 }
 
+/* Replace startify-horizon text with PALIROOTS */
+.header-logo .h2 {
+  position: relative;
+  font-size: 0 !important; /* Hide original text */
+  width: auto !important;
+  min-width: 120px;
+  height: 24px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo .h2::before {
+  content: "PALIROOTS";
+  font-family: var(--font-header) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: 24px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--color-contrast-higher);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+/* Fix logo display on homepage transparent header */
+.template-index .header[transparent] .header-logo .h2::before {
+  color: white !important;
+}
+
+/* Make sure logo is visible */
+.header-logo {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hide duplicate search and other unwanted items */
+.header__column--right .search-action,
+.header__column--right .localization-wrapper,
+.header__column--right .account-actions {
+  display: none !important;
+}
+
+/* Only show login and cart in header actions */
+.paliroots-header-actions > *:not(.paliroots-header-login):not(.paliroots-header-greeting):not(.header-actions__cart-icon) {
+  display: none !important;
+}
+
+/* Simple sticky header with background change */
+.header[data-sticky-state='active']:not([transparent]) {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header[data-sticky-state='active']:not([transparent]) .paliroots-nav-link,
+.header[data-sticky-state='active']:not([transparent]) .paliroots-header-login,
+.header[data-sticky-state='active']:not([transparent]) .paliroots-header-greeting,
+.header[data-sticky-state='active']:not([transparent]) .header-logo .h2::before {
+  color: var(--color-contrast-higher) !important;
+}
+
+.header[data-sticky-state='active']:not([transparent]) .header-actions__cart-icon svg {
+  color: var(--color-contrast-higher) !important;
+}
+
 /* Mobile header adjustments */
 @media screen and (max-width: 749px) {
   .paliroots-header-actions {
