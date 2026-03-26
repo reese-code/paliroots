@@ -70,20 +70,19 @@
         "localization_position": "right",
         "localization_row": "top",
         "section_width": "page-width",
-        "section_height": "standard",
+        "section_height": "compact",
         "enable_sticky_header": "always",
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
         "color_scheme_top": "scheme-1",
         "color_scheme_bottom": "",
-        "color_scheme_transparent": "scheme-6",
-        "enable_transparent_header_home": true,
-        "home_color_scheme": "inverse",
-        "enable_transparent_header_product": false,
-        "product_color_scheme": "default",
-        "enable_transparent_header_collection": false,
-        "collection_color_scheme": "default"
+        "enable_header_adaptability_home": true,
+        "header_adaptability_style_home": "gradient",
+        "enable_header_adaptability_product": false,
+        "header_adaptability_style_product": "gradient",
+        "enable_header_adaptability_collection": false,
+        "header_adaptability_style_collection": "gradient"
       }
     }
   },
