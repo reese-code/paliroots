@@ -65,7 +65,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "group_4aCyy7": {
+            "group_QyGgtz": {
               "type": "group",
               "name": "t:names.group",
               "settings": {
@@ -78,7 +78,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
+                "gap": 4,
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -104,11 +104,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "text_3L9Fjq": {
+                "text_ifNtPX": {
                   "type": "text",
                   "name": "Heading",
                   "settings": {
-                    "text": "<h2>Join the club</h2>",
+                    "text": "<h3>Company</h3>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -130,15 +130,107 @@
                   },
                   "blocks": {}
                 },
-                "text_eC4rXd": {
-                  "type": "text",
-                  "name": "Text",
+                "button_dr88GP": {
+                  "type": "button",
+                  "name": "t:names.button",
                   "settings": {
-                    "text": "<p>Get exclusive deals and early access to new products. </p>",
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_xqgRGk": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_wjBMKw": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_ifNtPX",
+                "button_dr88GP",
+                "button_xqgRGk",
+                "button_wjBMKw"
+              ]
+            },
+            "group_W4xjpT": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_QNBk9Y": {
+                  "type": "text",
+                  "name": "Heading",
+                  "settings": {
+                    "text": "<h3>Support</h3>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "rte",
+                    "type_preset": "h3",
                     "font": "var(--font-primary--family)",
                     "font_size": "",
                     "line_height": "normal",
@@ -155,11 +247,58 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "button_wcARk4": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_UyXKUY": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_B4DwTi": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Contact",
+                    "link": "shopify://pages/contact",
+                    "open_in_new_tab": false,
+                    "style_class": "link",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
-                "text_3L9Fjq",
-                "text_eC4rXd"
+                "text_QNBk9Y",
+                "button_wcARk4",
+                "button_UyXKUY",
+                "button_B4DwTi"
               ]
             },
             "email_signup_NcLwNb": {
@@ -172,10 +311,10 @@
                 "color_scheme": "scheme-1",
                 "border_style": "all",
                 "border_width": 1,
-                "border_radius": 39,
+                "border_radius": 0,
                 "input_type_preset": "paragraph",
-                "style_class": "button-unstyled",
-                "display_type": "arrow",
+                "style_class": "button",
+                "display_type": "text",
                 "label": "Sign up",
                 "integrated_button": true,
                 "button_type_preset": "paragraph",
@@ -188,7 +327,8 @@
             }
           },
           "block_order": [
-            "group_4aCyy7",
+            "group_QyGgtz",
+            "group_W4xjpT",
             "email_signup_NcLwNb"
           ]
         },
@@ -221,7 +361,6 @@
             },
             "social_icons": {
               "type": "_footer-social-icons",
-              "disabled": true,
               "static": true,
               "settings": {},
               "blocks": {
