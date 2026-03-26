@@ -199,8 +199,8 @@ class HeaderComponent extends Component {
     // Get the bottom of the hero section
     const heroBottom = firstSection.offsetTop + firstSection.offsetHeight;
     
-    // Add scrolled class when past hero bottom
-    if (scrollTop > heroBottom - this.offsetHeight) {
+    // Add scrolled class when hero is completely out of view
+    if (scrollTop >= heroBottom) {
       this.classList.add('header--scrolled');
     } else {
       this.classList.remove('header--scrolled');

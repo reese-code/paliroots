@@ -14,33 +14,10 @@
     assign search_style = 'modal'
   endif
 
-  if section.settings.enable_transparent_header_home and template.name == 'index'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.home_color_scheme
-  elsif section.settings.enable_transparent_header_product and template.name == 'product'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.product_color_scheme
-  elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
-    assign transparent = 'always'
-    assign transparent_color_scheme = section.settings.collection_color_scheme
-  endif
-
   if section.settings.enable_sticky_header == 'always'
     assign sticky = 'always'
   elsif section.settings.enable_sticky_header == 'scroll-up'
     assign sticky = 'scroll-up'
-  endif
-
-  if transparent and sticky
-    assign transparent = 'not-sticky'
-  endif
-
-  if transparent
-    if transparent_color_scheme == 'inverse'
-      assign transparent_color_scheme = 'color-' | append: section.settings.color_scheme_transparent
-    else
-      assign transparent_color_scheme = 'color-' | append: section.settings.color_scheme_top
-    endif
   endif
 
   capture logo
@@ -56,7 +33,7 @@
   endcapture
 
   capture navigation_bar
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
+    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar'
   endcapture
 
   capture actions
@@ -139,10 +116,6 @@
 
   assign class = 'header'
 
-  if transparent_color_scheme
-    assign class = class | append: ' ' | append: transparent_color_scheme
-  endif
-
   if section.settings.color_scheme_top.settings.background.alpha != 1
     assign class = class | append: ' ' | append: 'header--inherit-color-scheme-on-menu-open'
   endif
@@ -195,9 +168,6 @@
 <header-component
   id="header-component"
   class="{{ class }}"
-  {% if transparent %}
-    transparent="{{ transparent }}"
-  {% endif %}
   {% if sticky %}
     sticky="{{ sticky }}"
   {% endif %}
@@ -408,11 +378,50 @@
   /* Header Adaptability Styles */
   .header--adaptive {
     transition: all 0.3s ease;
+    /* Position adaptive headers above hero without creating gaps */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--layer-overlay);
+  }
+  
+  /* Ensure content flows naturally without header gap */
+  .header-section:has(.header--adaptive) + .shopify-section {
+    margin-top: 0;
+  }
+  
+  /* Remove any section offsets for adaptive headers */
+  body:has(> #header-group .header--adaptive) > main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
+    &.spacing-style,
+    .spacing-style {
+      --section-top-offset: 0px;
+    }
+  }
+
+  /* Smooth transitions for all adaptive header elements */
+  .header--adaptive .header__row {
+    transition: background 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  .header--adaptive .header__row *,
+  .header--adaptive .header-logo *,
+  .header--adaptive svg,
+  .header--adaptive .header-logo svg {
+    transition: color 0.4s ease, fill 0.4s ease, stroke 0.4s ease;
   }
 
   /* Gradient background option */
+  .header--gradient {
+    /* Show default logo for gradient headers */
+    --header-logo-display: block;
+    --header-logo-inverse-display: none;
+  }
+  
   .header--gradient .header__row {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     
     /* Force dark/default colorings */
     --color-foreground: #000000;
@@ -436,7 +445,12 @@
     transition: all 0.3s ease;
   }
 
-  /* Default state: light colors for hero overlay */
+  /* Default state: light colors for hero overlay - show inverse logo */
+  .header--scroll-adaptive {
+    --header-logo-display: none;
+    --header-logo-inverse-display: block;
+  }
+  
   .header--scroll-adaptive .header__row {
     --color-foreground: #ffffff;
     --color-foreground-heading: #ffffff;
@@ -455,7 +469,12 @@
     stroke: #ffffff !important;
   }
 
-  /* Scrolled state: dark colors with gradient background */
+  /* Scrolled state: dark colors with gradient background - show default logo */
+  .header--scroll-adaptive.header--scrolled {
+    --header-logo-display: block;
+    --header-logo-inverse-display: none;
+  }
+  
   .header--scroll-adaptive.header--scrolled .header__row {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
     backdrop-filter: blur(10px);
@@ -968,54 +987,20 @@
       "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme_transparent",
-      "label": "t:settings.inverse",
-      "default": "primary",
-      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
-    },
-    {
       "type": "header",
       "content": "t:content.home_page"
     },
     {
       "type": "checkbox",
-      "id": "enable_transparent_header_home",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "home_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_home }}"
-    },
-    {
-      "type": "header",
-      "content": "Header Adaptability"
-    },
-    {
-      "type": "checkbox",
       "id": "enable_header_adaptability_home",
-      "label": "Enable adaptive header on home page",
+      "label": "Enable adaptive header",
       "default": false,
       "info": "Choose between gradient background or scroll-based color changes"
     },
     {
       "type": "select",
       "id": "header_adaptability_style_home",
-      "label": "Home page adaptability style",
+      "label": "Adaptability style",
       "options": [
         {
           "value": "gradient",
@@ -1035,42 +1020,15 @@
     },
     {
       "type": "checkbox",
-      "id": "enable_transparent_header_product",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "product_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_product }}"
-    },
-    {
-      "type": "header",
-      "content": "Header Adaptability"
-    },
-    {
-      "type": "checkbox",
       "id": "enable_header_adaptability_product",
-      "label": "Enable adaptive header on product pages",
+      "label": "Enable adaptive header",
       "default": false,
       "info": "Choose between gradient background or scroll-based color changes"
     },
     {
       "type": "select",
       "id": "header_adaptability_style_product",
-      "label": "Product page adaptability style",
+      "label": "Adaptability style",
       "options": [
         {
           "value": "gradient",
@@ -1090,42 +1048,15 @@
     },
     {
       "type": "checkbox",
-      "id": "enable_transparent_header_collection",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "collection_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
-    },
-    {
-      "type": "header",
-      "content": "Header Adaptability"
-    },
-    {
-      "type": "checkbox",
       "id": "enable_header_adaptability_collection",
-      "label": "Enable adaptive header on collection pages",
+      "label": "Enable adaptive header",
       "default": false,
       "info": "Choose between gradient background or scroll-based color changes"
     },
     {
       "type": "select",
       "id": "header_adaptability_style_collection",
-      "label": "Collection page adaptability style",
+      "label": "Adaptability style",
       "options": [
         {
           "value": "gradient",
