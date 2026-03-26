@@ -189,17 +189,17 @@ class HeaderComponent extends Component {
    * @param {number} scrollTop - Current scroll position
    */
   #handleAdaptiveHeaderScroll = (scrollTop) => {
-    // Only run if header has scroll-adaptive class
-    if (!this.classList.contains('header--scroll-adaptive')) return;
+    // Only run if header has adaptive class and is scroll-based
+    if (!this.classList.contains('header--adaptive') || !this.classList.contains('header--scroll-adaptive')) return;
 
     // Find hero section (first section after header)
     const firstSection = document.querySelector('main .shopify-section:first-child');
     if (!firstSection || !(firstSection instanceof HTMLElement)) return;
 
-    // Get the bottom of the hero section
-    const heroBottom = firstSection.offsetTop + firstSection.offsetHeight;
+    // Get the bottom of the hero section - using a more conservative threshold
+    const heroBottom = firstSection.offsetTop + (firstSection.offsetHeight * 0.5);
     
-    // Add scrolled class when hero is completely out of view
+    // Add scrolled class when halfway through the hero section
     if (scrollTop >= heroBottom) {
       this.classList.add('header--scrolled');
     } else {
@@ -213,7 +213,7 @@ class HeaderComponent extends Component {
     this.addEventListener('overflowMinimum', this.#handleOverflowMinimum);
 
     const stickyMode = this.getAttribute('sticky');
-    const isAdaptive = this.classList.contains('header--scroll-adaptive');
+    const isAdaptive = this.classList.contains('header--adaptive');
     
     if (stickyMode) {
       this.#observeStickyPosition(stickyMode === 'always');
