@@ -377,7 +377,7 @@
 
   /* Header Adaptability Styles */
   .header--adaptive {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     /* Position adaptive headers above hero without creating gaps */
     position: absolute;
     top: 0;
@@ -407,6 +407,12 @@
   .header--adaptive .header__row *,
   .header--adaptive .header-logo * {
     transition: color 0.4s ease;
+  }
+
+  /* Logo transition for smooth switching between versions */
+  .header--adaptive .header-logo__original,
+  .header--adaptive .header-logo__inverse {
+    transition: opacity 0.4s ease;
   }
 
   /* Only transition logo SVGs */
@@ -475,9 +481,7 @@
   }
   
   .header--scroll-adaptive.header--scrolled .header__row {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
     
     --color-foreground: #000000;
     --color-foreground-heading: #000000;
