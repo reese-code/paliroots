@@ -190,6 +190,91 @@
 
 </style>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  {% if section.settings.animate_numbers %}
+    if (window.gsap && window.ScrollTrigger) {
+      // Function to extract and animate numbers
+      function animateStatistics() {
+        const statisticItems = document.querySelectorAll('#{{ section_id }} .statistic-primary');
+        
+        statisticItems.forEach((item, index) => {
+          const originalHTML = item.innerHTML;
+          const textContent = item.textContent || item.innerText;
+          
+          // Extract numbers including decimals and commas
+          const numberMatch = textContent.match(/[\d,]+\.?\d*/);
+          if (!numberMatch) return;
+          
+          const numberStr = numberMatch[0];
+          const targetNumber = parseFloat(numberStr.replace(/,/g, ''));
+          
+          // Check if it's a valid number
+          if (isNaN(targetNumber)) return;
+          
+          // Store formatting info
+          const hasCommas = numberStr.includes(',');
+          const decimalPlaces = numberStr.includes('.') ? numberStr.split('.')[1].length : 0;
+          const prefix = textContent.substring(0, textContent.indexOf(numberStr));
+          const suffix = textContent.substring(textContent.indexOf(numberStr) + numberStr.length);
+          
+          // Create counter object
+          const counter = { value: 0 };
+          
+          // Create the animation
+          gsap.fromTo(counter, 
+            { value: 0 },
+            {
+              value: targetNumber,
+              duration: 2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 80%",
+                once: true
+              },
+              onUpdate: function() {
+                let currentValue = counter.value;
+                
+                // Format the number
+                if (decimalPlaces > 0) {
+                  currentValue = currentValue.toFixed(decimalPlaces);
+                } else {
+                  currentValue = Math.round(currentValue);
+                }
+                
+                // Add commas if original had them
+                if (hasCommas) {
+                  currentValue = currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                }
+                
+                // Update the content while preserving HTML structure
+                const newContent = originalHTML.replace(numberStr, currentValue);
+                item.innerHTML = newContent;
+              },
+              onComplete: function() {
+                // Ensure final value matches exactly
+                item.innerHTML = originalHTML;
+              }
+            }
+          );
+        });
+      }
+      
+      // Initialize animations
+      animateStatistics();
+      
+      // Re-initialize on Shopify theme editor changes
+      document.addEventListener('shopify:section:load', function(e) {
+        if (e.detail.sectionId === '{{ section.id }}') {
+          setTimeout(animateStatistics, 100);
+        }
+      });
+    }
+  {% endif %}
+});
+</script>
+
 {% schema %}
 {
   "name": "Statistics",
@@ -348,6 +433,17 @@
       "label": "Vertical Gap",
       "default": 32,
       "info": "Space between rows"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "animate_numbers",
+      "label": "Animate Numbers",
+      "default": true,
+      "info": "Numbers will count up from 0 when section comes into view"
     },
     {
       "type": "header",

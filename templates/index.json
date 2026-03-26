@@ -1010,6 +1010,7 @@
           "settings": {
             "collection": "{{ closest.collection }}",
             "placement": "on_image",
+            "gradient_style": "light",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-end",
             "collection_card_gap": 8,
@@ -1136,6 +1137,48 @@
       "settings": {
         "title": "TRUSTED BY OVER 100,000 MEN"
       }
+    },
+    "statistics_48fG7J": {
+      "type": "statistics",
+      "blocks": {
+        "statistic_item_fcGnkL": {
+          "type": "statistic_item",
+          "settings": {
+            "primary_text": "<h3>2.6+ million meals donated</h3>",
+            "primary_text_color": "#000000",
+            "secondary_text": "<h3>To children in Palestine</h3>",
+            "secondary_text_color": "#666666"
+          }
+        },
+        "statistic_item_yt4ePx": {
+          "type": "statistic_item",
+          "settings": {
+            "primary_text": "<h3>$3.4 million raised</h3>",
+            "primary_text_color": "#000000",
+            "secondary_text": "<h3>for vital community projects</h3>",
+            "secondary_text_color": "#666666"
+          }
+        }
+      },
+      "block_order": [
+        "statistic_item_fcGnkL",
+        "statistic_item_yt4ePx"
+      ],
+      "name": "Statistics",
+      "settings": {
+        "heading": "",
+        "heading_alignment": "center",
+        "layout": "vertical",
+        "grid_columns": "2",
+        "content_alignment": "start",
+        "text_alignment": "left",
+        "card_width": "fill",
+        "grid_gap_horizontal": 40,
+        "grid_gap_vertical": 40,
+        "border_thickness": 1,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
@@ -1144,6 +1187,7 @@
     "product_list_qU3bEB",
     "section_3kM4jh",
     "collection_list_cgeKKU",
+    "statistics_48fG7J",
     "v2_testimonials_gYMtty"
   ]
 }
