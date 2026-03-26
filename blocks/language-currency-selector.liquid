@@ -18,7 +18,7 @@
 
   .selector-dropdown select {
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1rem 3rem 1rem 1.5rem;
     border: 2px solid var(--custom-border-color, #000000);
     border-radius: 0;
     background-color: var(--custom-background-color, #f8f8f8);
@@ -33,9 +33,22 @@
   }
 
   .selector-dropdown select option {
-    color: #000000;
-    background-color: #ffffff;
+    color: #000000 !important;
+    background-color: #ffffff !important;
     padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Ensure text is visible across browsers */
+  .selector-dropdown select {
+    color: var(--custom-text-color, #000000) !important;
+  }
+  
+  /* Webkit specific option styling */
+  .selector-dropdown select option:checked {
+    background-color: #007bff !important;
+    color: #ffffff !important;
   }
 
   .selector-dropdown::after {
@@ -66,8 +79,9 @@
   }
 
   @media screen and (width < 750px) {
-    .language-currency-selector--horizontal {
-      flex-direction: column;
+    /* Remove the mobile stacking - keep horizontal layout on mobile */
+    .language-currency-selector--horizontal .selector-dropdown {
+      max-width: none;
     }
   }
 {% endstylesheet %}
@@ -83,42 +97,44 @@
 >
   <!-- Language Selector -->
   <div class="selector-dropdown">
-    {% form 'localization', id: 'LanguageSelector' %}
-      <select
-        name="locale_code"
-        aria-label="Language"
-        onchange="this.form.submit()"
+    <select
+      name="locale_code"
+      aria-label="Language"
+    >
+      <option 
+        value="en" 
+        {% if localization.language.iso_code == 'en' %}selected{% endif %}
       >
-        {% for locale in localization.available_locales %}
-          <option 
-            value="{{ locale.iso_code }}" 
-            {% if locale.iso_code == localization.language.iso_code %}selected{% endif %}
-          >
-            {{ locale.endonym_name | capitalize }}
-          </option>
-        {% endfor %}
-      </select>
-    {% endform %}
+        English
+      </option>
+      <option 
+        value="es" 
+        {% if localization.language.iso_code == 'es' %}selected{% endif %}
+      >
+        Spanish
+      </option>
+    </select>
   </div>
 
   <!-- Currency Selector -->
   <div class="selector-dropdown">
-    {% form 'localization', id: 'CurrencySelector' %}
-      <select
-        name="currency_code"
-        aria-label="Currency"
-        onchange="this.form.submit()"
+    <select
+      name="currency_code"
+      aria-label="Currency"
+    >
+      <option 
+        value="USD" 
+        {% if localization.currency.iso_code == 'USD' %}selected{% endif %}
       >
-        {% for currency in localization.available_currencies %}
-          <option 
-            value="{{ currency.iso_code }}" 
-            {% if currency.iso_code == localization.currency.iso_code %}selected{% endif %}
-          >
-            {{ currency.iso_code }} / {{ currency.symbol }}
-          </option>
-        {% endfor %}
-      </select>
-    {% endform %}
+        USD / $
+      </option>
+      <option 
+        value="CAD" 
+        {% if localization.currency.iso_code == 'CAD' %}selected{% endif %}
+      >
+        CAD / $
+      </option>
+    </select>
   </div>
 </div>
 
@@ -138,7 +154,7 @@
         },
         {
           "value": "horizontal",
-          "label": "Horizontal (side-by-side)"
+          "label": "Horizontal (side-by-side on all screens)"
         }
       ],
       "default": "vertical"
