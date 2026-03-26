@@ -78,7 +78,7 @@
         "color_scheme_top": "scheme-1",
         "color_scheme_bottom": "",
         "enable_header_adaptability_home": true,
-        "header_adaptability_style_home": "gradient",
+        "header_adaptability_style_home": "scroll-based",
         "enable_header_adaptability_product": false,
         "header_adaptability_style_product": "gradient",
         "enable_header_adaptability_collection": false,

@@ -463,8 +463,12 @@
 
   .header--scroll-adaptive svg,
   .header--scroll-adaptive .header-logo svg {
-    fill: #ffffff !important;
     stroke: #ffffff !important;
+  }
+  
+  /* Only fill for logos, not UI icons */
+  .header--scroll-adaptive .header-logo svg {
+    fill: #ffffff !important;
   }
 
   /* Scrolled state: dark colors with gradient background - show default logo */
