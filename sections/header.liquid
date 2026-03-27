@@ -128,28 +128,16 @@
     assign class = class | append: ' ' | append: collapse_header_paddings_class
   endif
 
-  # Add header adaptability classes based on page type
-  assign enable_adaptability = false
-  assign adaptability_style = ''
-
-  if template.name == 'index' and section.settings.enable_header_adaptability_home
-    assign enable_adaptability = true
-    assign adaptability_style = section.settings.header_adaptability_style_home
-  elsif template.name == 'product' and section.settings.enable_header_adaptability_product
-    assign enable_adaptability = true
-    assign adaptability_style = section.settings.header_adaptability_style_product
-  elsif template.name == 'collection' and section.settings.enable_header_adaptability_collection
-    assign enable_adaptability = true
-    assign adaptability_style = section.settings.header_adaptability_style_collection
-  endif
-
-  if enable_adaptability
-    assign class = class | append: ' header--adaptive'
-    if adaptability_style == 'gradient'
-      assign class = class | append: ' header--gradient'
-    elsif adaptability_style == 'scroll-based'
-      assign class = class | append: ' header--scroll-adaptive'
-    endif
+  # PALIROOTS 2: Configure header styles based on page type
+  # Home page gets adaptive (scroll-based) version
+  # All other pages get gradient (non-adaptive) version
+  
+  if template.name == 'index'
+    # Home page: Use adaptive scroll-based header
+    assign class = class | append: ' header--adaptive header--scroll-adaptive'
+  else
+    # All other pages: Use gradient header (non-adaptive)
+    assign class = class | append: ' header--gradient-static'
   endif
 %}
 
@@ -494,6 +482,34 @@
   }
 
   .header--scroll-adaptive.header--scrolled .header-logo svg {
+    fill: #000000 !important;
+    stroke: #000000 !important;
+  }
+
+  /* PALIROOTS 2: Static gradient header for non-home pages */
+  .header--gradient-static {
+    /* Use normal document flow positioning */
+    position: relative;
+    /* Show default logo for gradient headers */
+    --header-logo-display: block;
+    --header-logo-inverse-display: none;
+  }
+  
+  .header--gradient-static .header__row {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    
+    /* Force dark/default colorings */
+    --color-foreground: #000000;
+    --color-foreground-heading: #000000;
+    color: #000000;
+  }
+
+  .header--gradient-static .header__row *,
+  .header--gradient-static .header-logo * {
+    color: #000000 !important;
+  }
+
+  .header--gradient-static .header-logo svg {
     fill: #000000 !important;
     stroke: #000000 !important;
   }
