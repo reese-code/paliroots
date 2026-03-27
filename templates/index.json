@@ -1086,7 +1086,7 @@
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "columns": 2,
-        "mobile_columns": "2",
+        "mobile_columns": "1",
         "columns_gap": 10,
         "bento_gap": 8,
         "rows_gap": 10,
@@ -1098,44 +1098,6 @@
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "v2_testimonials_gYMtty": {
-      "type": "v2-testimonials",
-      "blocks": {
-        "testimonial_NqrYAa": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
-            "instagram_handle": "",
-            "size": "medium"
-          }
-        },
-        "testimonial_q6z4Dt": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
-            "instagram_handle": "",
-            "size": "medium"
-          }
-        },
-        "testimonial_bc37z7": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
-            "instagram_handle": "",
-            "size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_NqrYAa",
-        "testimonial_q6z4Dt",
-        "testimonial_bc37z7"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "title": "TRUSTED BY OVER 100,000 MEN"
       }
     },
     "statistics_48fG7J": {
@@ -1175,9 +1137,48 @@
         "card_width": "fill",
         "grid_gap_horizontal": 40,
         "grid_gap_vertical": 40,
+        "animate_numbers": true,
         "border_thickness": 1,
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "v2_testimonials_gYMtty": {
+      "type": "v2-testimonials",
+      "blocks": {
+        "testimonial_NqrYAa": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
+            "instagram_handle": "",
+            "size": "medium"
+          }
+        },
+        "testimonial_q6z4Dt": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
+            "instagram_handle": "",
+            "size": "medium"
+          }
+        },
+        "testimonial_bc37z7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "STATELY'S BEEN A GAME-CHANGER. FOUR BOXES IN, NOT A SINGLE MISS. I LOOK AND FEEL GREAT - THANKS NATALIE!",
+            "instagram_handle": "",
+            "size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_NqrYAa",
+        "testimonial_q6z4Dt",
+        "testimonial_bc37z7"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "title": "TRUSTED BY OVER 100,000 MEN"
       }
     }
   },

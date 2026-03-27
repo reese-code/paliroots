@@ -131,6 +131,46 @@
   .custom-color > :is(h1, h2, h3, h4, h5, h6, p, *) {
     color: var(--color);
   }
+
+  /* Fill text sizing - scales to fit container width */
+  .text-fill-container {
+    --fill-min-size: 2rem;
+    --fill-max-size: 20vw;
+    --fill-preferred-size: 8vw;
+  }
+
+  .text-fill-container > * {
+    font-size: clamp(var(--fill-min-size), var(--fill-preferred-size), var(--fill-max-size)) !important;
+    line-height: 0.9 !important;
+    text-wrap: nowrap !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Responsive adjustments for fill text */
+  @media screen and (max-width: 768px) {
+    .text-fill-container {
+      --fill-min-size: 1.5rem;
+      --fill-max-size: 15vw;
+      --fill-preferred-size: 12vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .text-fill-container {
+      --fill-min-size: 1.25rem;
+      --fill-max-size: 12vw;
+      --fill-preferred-size: 10vw;
+    }
+  }
+
+  /* For better scaling on larger screens */
+  @media screen and (min-width: 1200px) {
+    .text-fill-container {
+      --fill-max-size: 240px;
+    }
+  }
 {% endstylesheet %}
 
 {% liquid
@@ -157,7 +197,9 @@
     endif
     if block.settings.type_preset == 'custom'
       echo ' custom-typography '
-      if block.settings.font_size != ''
+      if block.settings.font_size == 'fill'
+        echo ' text-fill-container '
+      elsif block.settings.font_size != ''
         echo ' custom-font-size '
       endif
       if block.settings.color != ''
