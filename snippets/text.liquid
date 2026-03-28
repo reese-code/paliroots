@@ -171,6 +171,54 @@
       --fill-max-size: 240px;
     }
   }
+
+  /* Screen Width text sizing - scales to fit screen width with better control */
+  .text-screen-width {
+    --screen-min-size: 2.5rem;
+    --screen-max-size: min(25vw, 300px);
+    --screen-preferred-size: 10vw;
+  }
+
+  .text-screen-width > * {
+    font-size: clamp(var(--screen-min-size), var(--screen-preferred-size), var(--screen-max-size)) !important;
+    line-height: 0.85 !important;
+    text-wrap: balance !important;
+    width: 100% !important;
+    display: block !important;
+    word-spacing: -0.1em !important;
+  }
+
+  /* Responsive adjustments for screen width text */
+  @media screen and (max-width: 1024px) {
+    .text-screen-width {
+      --screen-min-size: 2rem;
+      --screen-max-size: min(20vw, 250px);
+      --screen-preferred-size: 12vw;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .text-screen-width {
+      --screen-min-size: 1.75rem;
+      --screen-max-size: min(18vw, 200px);
+      --screen-preferred-size: 14vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .text-screen-width {
+      --screen-min-size: 1.5rem;
+      --screen-max-size: min(16vw, 150px);
+      --screen-preferred-size: 16vw;
+    }
+  }
+
+  /* For very large screens */
+  @media screen and (min-width: 1400px) {
+    .text-screen-width {
+      --screen-max-size: 350px;
+    }
+  }
 {% endstylesheet %}
 
 {% liquid
@@ -199,6 +247,8 @@
       echo ' custom-typography '
       if block.settings.font_size == 'fill'
         echo ' text-fill-container '
+      elsif block.settings.font_size == 'screen-width'
+        echo ' text-screen-width '
       elsif block.settings.font_size != ''
         echo ' custom-font-size '
       endif
