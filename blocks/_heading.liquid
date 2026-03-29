@@ -272,6 +272,137 @@
       "visible_if": "{{ block.settings.type_preset != 'rte' }}"
     },
     {
+      "type": "header",
+      "content": "Selective Font Targeting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_font_targeting",
+      "label": "Enable selective font changes",
+      "default": false,
+      "info": "Apply different fonts to specific words or letters in your heading"
+    },
+    {
+      "type": "text",
+      "id": "target_text_1",
+      "label": "Target text #1",
+      "placeholder": "Word or letter to change",
+      "visible_if": "{{ block.settings.enable_font_targeting }}"
+    },
+    {
+      "type": "select",
+      "id": "target_font_1",
+      "label": "Font for target #1",
+      "options": [
+        {
+          "value": "var(--font-body--family)",
+          "label": "Body Font"
+        },
+        {
+          "value": "var(--font-subheading--family)",
+          "label": "Subheading Font"
+        },
+        {
+          "value": "var(--font-heading--family)",
+          "label": "Heading Font"
+        },
+        {
+          "value": "var(--font-accent--family)",
+          "label": "Accent Font"
+        },
+        {
+          "value": "'PP Playground', var(--font-body--family)",
+          "label": "PP Playground"
+        },
+        {
+          "value": "'White Oleander', var(--font-body--family)",
+          "label": "White Oleander"
+        }
+      ],
+      "default": "'PP Playground', var(--font-body--family)",
+      "visible_if": "{{ block.settings.enable_font_targeting and block.settings.target_text_1 != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "target_text_2",
+      "label": "Target text #2",
+      "placeholder": "Word or letter to change",
+      "visible_if": "{{ block.settings.enable_font_targeting }}"
+    },
+    {
+      "type": "select",
+      "id": "target_font_2",
+      "label": "Font for target #2",
+      "options": [
+        {
+          "value": "var(--font-body--family)",
+          "label": "Body Font"
+        },
+        {
+          "value": "var(--font-subheading--family)",
+          "label": "Subheading Font"
+        },
+        {
+          "value": "var(--font-heading--family)",
+          "label": "Heading Font"
+        },
+        {
+          "value": "var(--font-accent--family)",
+          "label": "Accent Font"
+        },
+        {
+          "value": "'PP Playground', var(--font-body--family)",
+          "label": "PP Playground"
+        },
+        {
+          "value": "'White Oleander', var(--font-body--family)",
+          "label": "White Oleander"
+        }
+      ],
+      "default": "'White Oleander', var(--font-body--family)",
+      "visible_if": "{{ block.settings.enable_font_targeting and block.settings.target_text_2 != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "target_text_3",
+      "label": "Target text #3",
+      "placeholder": "Word or letter to change",
+      "visible_if": "{{ block.settings.enable_font_targeting }}"
+    },
+    {
+      "type": "select",
+      "id": "target_font_3",
+      "label": "Font for target #3",
+      "options": [
+        {
+          "value": "var(--font-body--family)",
+          "label": "Body Font"
+        },
+        {
+          "value": "var(--font-subheading--family)",
+          "label": "Subheading Font"
+        },
+        {
+          "value": "var(--font-heading--family)",
+          "label": "Heading Font"
+        },
+        {
+          "value": "var(--font-accent--family)",
+          "label": "Accent Font"
+        },
+        {
+          "value": "'PP Playground', var(--font-body--family)",
+          "label": "PP Playground"
+        },
+        {
+          "value": "'White Oleander', var(--font-body--family)",
+          "label": "White Oleander"
+        }
+      ],
+      "default": "'PP Playground', var(--font-body--family)",
+      "visible_if": "{{ block.settings.enable_font_targeting and block.settings.target_text_3 != blank }}"
+    },
+    {
       "type": "richtext",
       "id": "text",
       "label": "t:settings.text",

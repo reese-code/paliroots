@@ -219,6 +219,39 @@
       --screen-max-size: 350px;
     }
   }
+
+  /* Selective Font Targeting Styles */
+  .font-target-1 {
+    font-family: var(--target-font-1) !important;
+  }
+  
+  .font-target-2 {
+    font-family: var(--target-font-2) !important;
+  }
+  
+  .font-target-3 {
+    font-family: var(--target-font-3) !important;
+  }
+
+  /* Ensure font targeting works inside any text element */
+  .text-block .font-target-1,
+  .text-block .font-target-2,
+  .text-block .font-target-3 {
+    display: inline !important;
+  }
+
+  /* Preserve other text styling when targeting fonts */
+  .text-block .font-target-1,
+  .text-block .font-target-2,
+  .text-block .font-target-3 {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    text-decoration: inherit;
+  }
 {% endstylesheet %}
 
 {% liquid
@@ -283,6 +316,17 @@
       --text-corner-radius: {{ block.settings.corner_radius }}px;
       --text-padding: max(var(--padding-2xs), calc((var(--text-corner-radius) + var(--padding-xs)) * (1 - cos(45deg))));
     {% endif %}
+    {% if block.settings.enable_font_targeting %}
+      {% if block.settings.target_text_1 != blank and block.settings.target_font_1 != blank %}
+        --target-font-1: {{ block.settings.target_font_1 }};
+      {% endif %}
+      {% if block.settings.target_text_2 != blank and block.settings.target_font_2 != blank %}
+        --target-font-2: {{ block.settings.target_font_2 }};
+      {% endif %}
+      {% if block.settings.target_text_3 != blank and block.settings.target_font_3 != blank %}
+        --target-font-3: {{ block.settings.target_font_3 }};
+      {% endif %}
+    {% endif %}
   "
 
   {{ block.shopify_attributes }}
@@ -298,12 +342,40 @@
   endif
 %}
 
+{% liquid
+  # Process font targeting if enabled
+  if block.settings.enable_font_targeting
+    assign processed_text = block.settings.text
+    
+    # Apply font targeting for each target text
+    if block.settings.target_text_1 != blank and block.settings.target_font_1 != blank
+      assign target_1 = block.settings.target_text_1
+      assign replacement_1 = '<span class="font-target-1">' | append: target_1 | append: '</span>'
+      assign processed_text = processed_text | replace: target_1, replacement_1
+    endif
+    
+    if block.settings.target_text_2 != blank and block.settings.target_font_2 != blank
+      assign target_2 = block.settings.target_text_2
+      assign replacement_2 = '<span class="font-target-2">' | append: target_2 | append: '</span>'
+      assign processed_text = processed_text | replace: target_2, replacement_2
+    endif
+    
+    if block.settings.target_text_3 != blank and block.settings.target_font_3 != blank
+      assign target_3 = block.settings.target_text_3
+      assign replacement_3 = '<span class="font-target-3">' | append: target_3 | append: '</span>'
+      assign processed_text = processed_text | replace: target_3, replacement_3
+    endif
+  else
+    assign processed_text = block.settings.text
+  endif
+%}
+
 {% if fallback_text != blank and plain_text == blank %}
   <div {{ attributes }}>
     {{ fallback_text }}
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes }}>
-    {{ block.settings.text }}
+    {{ processed_text }}
   </{{ element }}>
 {% endif %}
