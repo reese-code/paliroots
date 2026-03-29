@@ -11,23 +11,191 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "section_XcNw6A": {
+      "type": "section",
       "blocks": {
-        "heading": {
+        "text_C4LHMa": {
           "type": "text",
-          "name": "Title",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
+            "text": "<h1>We built this from scratch. No investors. No shortcuts. Just two siblings, a vision, and a warehouse floor. We packed the first orders by hand. Slept next to the inventory. Now it’s global. But it wasn’t always. This is for the ones who’ve been watching.</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "h1",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "color": "",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_C4LHMa"
+      ],
+      "name": "t:names.large_logo",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "space-between",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "image_with_text_zEczj3": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_EpPehc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We were born in Jerusalem and raised in the States—always finding new ways to feel close to home.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_aLjgJA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For us, that connection came through food, through dance, through family stories passed down in pieces.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_bbtGN7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>PaliRoots began as a way to bring that feeling home.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_hrR8U4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A bridge between here and there.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_K6ywnY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Design and storytelling as a form of resistance—and celebration.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_Qcjeaa": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Because being Palestinian means carrying stories that were buried.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        },
+        "text_HT3Yim": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ours is to bring them back to life.</p>",
+            "text_preset": "rte",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "text_EpPehc",
+        "text_aLjgJA",
+        "text_bbtGN7",
+        "text_hrR8U4",
+        "text_K6ywnY",
+        "text_Qcjeaa",
+        "text_HT3Yim"
+      ],
+      "name": "Image with Text",
+      "settings": {
+        "layout_direction": "flipped",
+        "sizing_option": "equal",
+        "gap": 32,
+        "text_gap": 16,
+        "image": "shopify://shop_images/polaroidPaliroots.png",
+        "image_link": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 40
+      }
+    },
+    "product_recommendations_txfDEg": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_feQfgD": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h2>If you’re new here, start here.</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -38,88 +206,277 @@
           },
           "blocks": {}
         },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
+        "text_mdwHWE": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>These are the essentials—the pieces that built PaliRoots. The ones Aminah and Hussein wear the most.  Each one carries a story, a symbol, a reason to look twice.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product": "{{ closest.product }}",
+            "product_card_gap": 16,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_CRUEHW": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "product": "filistien-vintage-soccer-jersey",
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "group_qQcqrw": {
+              "type": "group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "product_title_9jWVei": {
+                  "type": "product-title",
+                  "settings": {
+                    "product": "{{ closest.product }}",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_kHz4HP": {
+                  "type": "price",
+                  "settings": {
+                    "product": "{{ closest.product }}",
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "swatches_WgxVgL": {
+                  "type": "swatches",
+                  "settings": {
+                    "product": "{{ closest.product }}",
+                    "product_swatches_alignment": "flex-start",
+                    "product_swatches_alignment_mobile": "flex-start",
+                    "hide_padding": false,
+                    "product_swatches_padding_top": 4,
+                    "product_swatches_padding_bottom": 0,
+                    "product_swatches_padding_left": 0,
+                    "product_swatches_padding_right": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "product_title_9jWVei",
+                "price_kHz4HP",
+                "swatches_WgxVgL"
+              ]
+            }
+          },
+          "block_order": [
+            "product_card_gallery_CRUEHW",
+            "group_qQcqrw"
+          ]
+        }
+      },
+      "block_order": [
+        "text_feQfgD",
+        "text_mdwHWE"
+      ],
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "complementary",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 20,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 20,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_ADazjX": {
+      "type": "section",
+      "blocks": {
+        "text_83mKYc": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>We started with Palestine. That stays at the core. But the vision’s grown. PaliRoots is a platform—for culture, expression, and stories that don’t beg to be told. We’re building legacy. Through fashion, through impact, through presence. And if you’re just here for the fit? You’re still in the right place.</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
           "blocks": {}
         }
       },
       "block_order": [
-        "heading",
-        "page-content"
+        "text_83mKYc"
       ],
+      "name": "t:names.large_logo",
       "settings": {
         "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
-      }
-    },
-    "image_gallery_3Xn7rJ": {
-      "type": "image-gallery",
-      "name": "Image Gallery - 5 Images",
-      "settings": {
-        "enable_bottom_row": true,
-        "switch_order": false,
-        "gap_horizontal": 20,
-        "gap_vertical": 20,
-        "image_1": "shopify://shop_images/pali-img-1.png",
-        "image_1_link": "",
-        "image_2": "shopify://shop_images/pali-img-2.png",
-        "image_2_link": "",
-        "image_3": "shopify://shop_images/pali-img-3.png",
-        "image_3_link": "",
-        "image_4": "shopify://shop_images/pali-img-4.png",
-        "image_4_link": "",
-        "image_5": "shopify://shop_images/pali-img-5.png",
-        "image_5_link": "",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "space-between",
+        "gap": 16,
         "section_width": "page-width",
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
-    },
-    "image_with_text_3XikYf": {
-      "type": "image-with-text",
-      "name": "Image with text - Text focus",
-      "settings": {
-        "layout_direction": "flipped",
-        "sizing_option": "text-one-third",
-        "gap": 40,
-        "image": "shopify://shop_images/pali-img-1.png",
-        "image_link": "",
-        "heading": "Our story",
-        "heading_size": "h2",
-        "text": "<p>Use this section to tell your brand story. Share your values, mission, and what makes your products special.</p>",
-        "button_label": "Learn more",
-        "button_link": "",
-        "button_style": "button",
-        "section_width": "page-width",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
-    },
-    "image_gallery_eYBEF9": {
-      "type": "image-gallery",
-      "name": "Image Gallery - 5 Images",
-      "settings": {
-        "enable_bottom_row": true,
-        "switch_order": true,
-        "gap_horizontal": 20,
-        "gap_vertical": 20,
-        "image_1": "shopify://shop_images/pali-img-1.png",
-        "image_1_link": "",
-        "image_2": "shopify://shop_images/pali-img-2.png",
-        "image_2_link": "",
-        "image_3": "shopify://shop_images/pali-img-3.png",
-        "image_3_link": "",
-        "image_4": "shopify://shop_images/pali-img-4.png",
-        "image_4_link": "",
-        "image_5": "shopify://shop_images/pali-img-5.png",
-        "image_5_link": "",
-        "section_width": "page-width",
-        "color_scheme": "",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -127,8 +484,9 @@
   },
   "order": [
     "main",
-    "image_gallery_3Xn7rJ",
-    "image_with_text_3XikYf",
-    "image_gallery_eYBEF9"
+    "section_XcNw6A",
+    "image_with_text_zEczj3",
+    "product_recommendations_txfDEg",
+    "section_ADazjX"
   ]
 }
