@@ -480,12 +480,131 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "section_D3B6EF": {
+      "type": "section",
+      "blocks": {
+        "text_8gMTY6": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h1>Every stitch has a story.</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "spacer_xd7gqm": {
+          "type": "spacer",
+          "name": "t:names.spacer",
+          "settings": {
+            "size": "pixel",
+            "percent_size": 100,
+            "pixel_size": 120,
+            "custom_mobile_size": false,
+            "size_mobile": "percent",
+            "percent_size_mobile": 100,
+            "pixel_size_mobile": 120
+          },
+          "blocks": {}
+        },
+        "text_nJiVRb": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h1>Every piece has roots.</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "right",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "enable_font_targeting": false,
+            "target_text_1": "",
+            "target_font_1": "'PP Playground', var(--font-body--family)",
+            "target_text_2": "",
+            "target_font_2": "'White Oleander', var(--font-body--family)",
+            "target_text_3": "",
+            "target_font_3": "'PP Playground', var(--font-body--family)",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_8gMTY6",
+        "spacer_xd7gqm",
+        "text_nJiVRb"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "section_XcNw6A",
     "image_with_text_zEczj3",
+    "section_D3B6EF",
     "product_recommendations_txfDEg",
     "section_ADazjX"
   ]
