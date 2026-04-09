@@ -89,12 +89,6 @@
         "gap": 40,
         "image": "shopify://shop_images/pali-img-1.png",
         "image_link": "",
-        "heading": "Our story",
-        "heading_size": "h2",
-        "text": "<p>Use this section to tell your brand story. Share your values, mission, and what makes your products special.</p>",
-        "button_label": "Learn more",
-        "button_link": "",
-        "button_style": "button",
         "section_width": "page-width",
         "padding-block-start": 40,
         "padding-block-end": 40
