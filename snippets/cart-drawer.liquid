@@ -109,21 +109,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 1rem 1.5rem;
     background-color: var(--color-background);
     border-top: 1px solid #eee;
     margin-top: 1rem;
   }
 
-  .meals-donated-label {
-    font-size: 0.75rem;
-    color: #666;
-    font-weight: 400;
+  .meals-donated-label,
+  .meals-donated-count {
+    font-size: 0.875rem;
     letter-spacing: 0.5px;
   }
 
+  .meals-donated-label {
+    color: #666;
+    font-weight: 400;
+  }
+
   .meals-donated-count {
-    font-size: 1rem;
     font-weight: 600;
     color: #333;
   }
@@ -143,7 +147,7 @@
     Override the header's transparent-state rule which does:
     .header--scroll-adaptive .header__row * { color: #fff !important; }
     That rule has specificity 0,2,0. We match it here (two classes + *)
-    but appear later in the document (body <style> beats head stylesheet),
+    but appear later in the document (body style tag beats head stylesheet),
     so this wins the cascade and restores dark text inside the cart dialog.
   */
   .cart-drawer__dialog.dialog-drawer * {
