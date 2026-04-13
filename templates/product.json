@@ -60,7 +60,7 @@
               "type": "text",
               "name": "Custom Tag",
               "settings": {
-                "text": "{% if settings.enable_custom_tag and settings.custom_tag_text != blank %}<span style=\"display: inline-block; padding: 4px 8px; background-color: #000; color: #fff; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 2px; margin-bottom: 8px;\">{{ settings.custom_tag_text }}<\/span>{% endif %}",
+                "text": "",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -124,7 +124,7 @@
                 "text_xrnftG": {
                   "type": "text",
                   "settings": {
-                    "text": "<h1 style=\"margin: 0;\">{{ closest.product.title }}<\/h1>",
+                    "text": "<h1>{{ closest.product.title }}<\/h1>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
