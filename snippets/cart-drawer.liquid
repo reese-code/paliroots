@@ -61,16 +61,154 @@
   }
 
   .cart-drawer__content {
-    height: calc(100% - var(--header-height));
+    flex: 1 1 0;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
 
   .cart-drawer__summary {
     background-color: var(--color-background);
-    position: sticky;
-    bottom: 0;
+    flex-shrink: 0;
     z-index: 1;
+  }
+
+  /* Free shipping progress bar styles */
+  .free-shipping-progress {
+    padding: 1rem 1.5rem;
+    background-color: var(--color-background);
+    border-bottom: 1px solid #eee;
+  }
+
+  .free-shipping-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: 0.5px;
+    color: #333;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: #333;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+  }
+
+  /* Meals donated section styles */
+  .meals-donated-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-background);
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+  }
+
+  .meals-donated-label {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .meals-donated-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Cart drawer customizations */
+  .cart-drawer__dialog {
+    width: 400px;
+    max-width: 90vw;
+  }
+
+  .cart-drawer__heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .cart-drawer__close-button {
+    padding: 0.5rem;
+  }
+
+  .cart-drawer__close-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Checkout button customizations */
+  .cart__checkout-button {
+    background-color: #000;
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+  }
+
+  .cart__checkout-button:hover {
+    background-color: #333;
+  }
+
+  .cart__checkout-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  #checkout,
+  #checkout * {
+    color: #fff !important;
+  }
+
+  /* Hide the estimated total section */
+  .cart__total-container {
+    display: none;
+  }
+
+  /* Payment icons styling */
+  .additional-checkout-buttons {
+    margin-top: 1rem;
+  }
+
+  .payment-methods {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background-color: var(--color-background);
+  }
+
+  .payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .payment-icons img {
+    height: 20px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .payment-icons img:hover {
+    opacity: 1;
   }
 </style>
 
@@ -85,6 +223,7 @@
   <button
     class="button header-actions__action button-unstyled"
     on:click="/open"
+    onclick="var el=this.closest('cart-drawer-component');if(!el)return;typeof el.open==='function'?el.open():customElements.whenDefined('cart-drawer-component').then(function(){el.open&&el.open();})"
     aria-label="{{ 'accessibility.open_cart_drawer' | t }}"
   >
     {% render 'cart-icon-component' %}
@@ -132,8 +271,7 @@
             id="cart-drawer-header"
           >
             <span class="cart-drawer__heading h3">
-              {{ 'content.cart_title' | t }}
-              {% render 'cart-bubble' %}
+              Your Bag ({{ cart.item_count }})
             </span>
 
             <button
@@ -148,10 +286,28 @@
             </button>
           </div>
 
+          {% comment %} Free shipping progress bar {% endcomment %}
+          {% assign free_shipping_threshold = 13000 %}
+          {% assign remaining_for_free_shipping = free_shipping_threshold | minus: cart.total_price %}
+          {% assign progress_percentage = cart.total_price | times: 100 | divided_by: free_shipping_threshold %}
+          {% if progress_percentage > 100 %}
+            {% assign progress_percentage = 100 %}
+          {% endif %}
+
+          <div class="free-shipping-progress">
+            {% if remaining_for_free_shipping > 0 %}
+              <p class="free-shipping-text">SPEND {{ remaining_for_free_shipping | money }} MORE TO UNLOCK FREE SHIPPING</p>
+            {% else %}
+              <p class="free-shipping-text">🎉 FREE SHIPPING UNLOCKED!</p>
+            {% endif %}
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+            </div>
+          </div>
+
           <div
             class="cart-drawer__content motion-reduce"
             aria-label="{{ 'accessibility.cart' | t }}"
-            style="--header-height: {{ section.settings.header_height | default: 60 }}px;"
           >
             <scroll-hint
               class="cart-drawer__items"

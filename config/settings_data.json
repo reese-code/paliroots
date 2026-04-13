@@ -76,6 +76,13 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "enable_inline_title_price": true,
+    "enable_custom_tag": true,
+    "custom_tag_text": "NEW",
+    "enable_conditional_purchase": true,
+    "select_size_text": "SELECT SIZE",
+    "show_colors_first": true,
+    "hide_empty_options": true,
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {

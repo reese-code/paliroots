@@ -69,5 +69,10 @@
     
     {% comment %} Custom JavaScript Bundle with GSAP {% endcomment %}
     <script src="{{ 'bundle.js' | asset_url }}" defer></script>
+    
+    {% comment %} Enhanced Variant Picker {% endcomment %}
+    {% if settings.enable_conditional_purchase or settings.show_colors_first %}
+      <script src="{{ 'enhanced-variant-picker.js' | asset_url }}" defer></script>
+    {% endif %}
   </body>
 </html>

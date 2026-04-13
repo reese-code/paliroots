@@ -317,6 +317,68 @@
     ]
   },
   {
+    "name": "Product Page Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Layout Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_inline_title_price",
+        "label": "Enable inline title and price layout",
+        "default": true,
+        "info": "Display title and price on the same line"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_tag",
+        "label": "Enable custom tag above title",
+        "default": true,
+        "info": "Show a customizable tag above the product title"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_text",
+        "label": "Custom tag text",
+        "default": "NEW",
+        "info": "Text to display in the custom tag (leave empty to hide)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_conditional_purchase",
+        "label": "Enable conditional purchasing",
+        "default": true,
+        "info": "Require size selection before allowing purchase"
+      },
+      {
+        "type": "text",
+        "id": "select_size_text",
+        "label": "Select size button text",
+        "default": "SELECT SIZE",
+        "info": "Text shown when no size is selected"
+      },
+      {
+        "type": "header",
+        "content": "Variant Display Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_colors_first",
+        "label": "Show color options before size",
+        "default": true,
+        "info": "Display color variants above size variants"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_empty_options",
+        "label": "Hide empty variant options",
+        "default": true,
+        "info": "Don't show variant options if they don't exist"
+      }
+    ]
+  },
+  {
     "name": "t:names.typography",
     "settings": [
       {

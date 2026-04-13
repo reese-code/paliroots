@@ -444,10 +444,11 @@
       {{- cart.item_count -}}
     </span>
     <form
-      action="{{ routes.cart_url }}"
+      action="{{ routes.cart_update_url }}"
       class="cart-form"
       id="cart-form"
       method="post"
+      data-cart-form
     >
       <div
         class="cart-items spacing-style{% if block.settings.dividers %} cart-items--dividers{% endif %}"

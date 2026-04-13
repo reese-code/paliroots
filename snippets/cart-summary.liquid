@@ -51,15 +51,9 @@
     {%- endif -%}
   </div>
 
-  {% if settings.show_cart_note or settings.show_add_discount_code %}
+  {% if settings.show_cart_note %}
     <div class="cart-actions">
-      {% if settings.show_cart_note %}
-        {% render 'cart-note' %}
-      {% endif %}
-
-      {% if settings.show_add_discount_code %}
-        {% render 'cart-discount' %}
-      {% endif %}
+      {% render 'cart-note' %}
     </div>
   {% endif %}
 
@@ -100,18 +94,25 @@
   </div>
 </div>
 
+{% comment %} Meals donated section {% endcomment %}
+{% assign meals_donated = cart.total_price | divided_by: 2500 | floor %}
+<div class="meals-donated-section">
+  <span class="meals-donated-label">MEALS DONATED</span>
+  <span class="meals-donated-count">{{ meals_donated }}</span>
+</div>
+
 <div class="cart__ctas">
   <button
-    type="submit"
+    type="button"
     id="checkout"
     class="cart__checkout-button button"
-    name="checkout"
+    style="color: #fff;"
     {% if cart == empty %}
       disabled
     {% endif %}
-    form="cart-form"
+    onclick="window.location.href='/checkout'"
   >
-    {{ 'content.checkout' | t }}
+    CHECKOUT • {{ cart.total_price | money }}
   </button>
 
   {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
@@ -119,4 +120,20 @@
       {{ content_for_additional_checkout_buttons }}
     </div>
   {% endif %}
+</div>
+
+{% comment %} Payment methods icons {% endcomment %}
+<div class="payment-methods">
+  <div class="payment-icons">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg" alt="American Express" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/ae9ceec48b1dc489596c.svg" alt="Apple Pay" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/f11b90c2972f3811f2d5.svg" alt="Diners Club" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/37a5ac93c2cd573ad330.svg" alt="Discover" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/f63e7cee0d75b04b154e.svg" alt="Meta Pay" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/5e88b49bd48bf7b07e6a.svg" alt="Google Pay" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/bd9b4e049a1b23c9fd79.svg" alt="Mastercard" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/13455b36ca6cecc4b566.svg" alt="PayPal" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/f05fb047c1a83652b5cd.svg" alt="Shop Pay" width="32" height="20">
+    <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/20e41d1b1b12816cb0a4.svg" alt="Visa" width="32" height="20">
+  </div>
 </div>

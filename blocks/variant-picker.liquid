@@ -7,7 +7,12 @@
   endif
 -%}
 
-{% render 'variant-main-picker', product_resource: product_resource %}
+{% comment %} Use enhanced variant picker if settings are enabled {% endcomment %}
+{% if settings.enable_conditional_purchase or settings.show_colors_first %}
+  {% render 'enhanced-variant-picker', product_resource: product_resource %}
+{% else %}
+  {% render 'variant-main-picker', product_resource: product_resource %}
+{% endif %}
 
 {% schema %}
 {
